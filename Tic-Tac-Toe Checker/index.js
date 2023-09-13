@@ -16,7 +16,7 @@ const checkArray = (array) => {
   return result;
 };
 
-const checkWin = (array) => {
+const checkWin = (array, check) => {
   for (let i = 0; i < array.length; i++) {
     if (
       array[i][0] === array[i][1] &&
@@ -37,20 +37,20 @@ const checkWin = (array) => {
     (array[0][0] === array[1][1] && array[1][1] === array[2][2]) ||
     (array[0][2] === array[1][1] && array[1][1] === array[2][0])
   ) {
-    if (array[i][0] !== 0) {
+    if (array[1][1] !== 0) {
       return array[1][1];
     }
   }
-  if (isArrayFull) {
+  if (check) {
     return 0;
   }
   return -1;
 };
 
 function isSolved(board) {
-  let result = 0;
-  const check = checkArray(board);
-  const win = checkWin(board);
-  return result;
-  // TODO: Check if the board is solved!
+  let check = checkArray(board);
+  console.log(check);
+  const win = checkWin(board, check);
+  console.log(win);
+  return win;
 }
